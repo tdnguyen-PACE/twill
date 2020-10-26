@@ -39,6 +39,9 @@ export default {
     restoreRow: function () {
       this.$emit('restoreRow', this.row)
     },
+    exportRow: function () {
+      this.$emit('exportRow', this.row)
+    },
     destroyRow: function () {
       this.$emit('destroyRow', this.row)
     },

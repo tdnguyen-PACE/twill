@@ -25,6 +25,9 @@
       <a v-if="row.duplicate && !row.hasOwnProperty('deleted')"
          href="#"
          @click.prevent="duplicateRow">{{ $trans('listing.dropdown.duplicate', 'Duplicate') }}</a>
+      <a v-if="row['status']!='exported'"
+         href="#"
+         @click.prevent="exportRow">{{ $trans('listing.dropdown.export', 'Export') }}</a>
       <a v-if="row.hasOwnProperty('deleted')"
          href="#"
          @click.prevent="restoreRow">{{ $trans('listing.dropdown.restore', 'Restore') }}</a>

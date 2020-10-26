@@ -164,12 +164,16 @@ export default {
   },
 
   export (row, callback) {
-    axios.post(window[process.env.VUE_APP_NAME].CMS_URLS.export, { id: row.id, responseType: 'blob' }).then(function (resp) {
-      const blob = new Blob([resp.data], { type: 'application/vnd.ms-excel' })
+    const config = {
+      responseType: 'blob'
+    }
+    axios.post(window[process.env.VUE_APP_NAME].CMS_URLS.export, { id: [row.id] }, config).then(function (resp) {
+      const type = resp.headers['content-type']
+      const blob = new Blob([resp.data], { type: type, encoding: 'UTF-8' })
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement('a')
       a.href = url
-      a.download = 'Export table.xlsx'
+      a.download = 'Contacts_Export.xlsx'
       a.click()
       window.URL.revokeObjectURL(url)
       if (callback && typeof callback === 'function') callback(resp)

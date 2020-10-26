@@ -332,8 +332,8 @@ const actions = {
       dispatch(ACTIONS.GET_DATATABLE)
     })
   },
-  [ACTIONS.EXPORT] ({ commit, state, dispatch }) {
-    api.export(state.bulk.join(), function (resp) {
+  [ACTIONS.EXPORT_ROW] ({ commit, state, dispatch }, row) {
+    api.export(row, function (resp) {
       commit(NOTIFICATION.SET_NOTIF, { message: resp.data.message, variant: resp.data.variant })
       dispatch(ACTIONS.GET_DATATABLE)
     })

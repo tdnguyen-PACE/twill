@@ -171,6 +171,9 @@ export default {
     },
     duplicateRow: function (row) {
       this.$store.dispatch(ACTIONS.DUPLICATE_ROW, row)
+    },
+    exportRow: function (row) {
+      this.$store.dispatch(ACTIONS.EXPORT_ROW, row)
     }
   }
 }
