@@ -263,7 +263,14 @@
       this.options.modules = this.options.modules || this.defaultModules
       const toolbar = {
         container: this.options.modules.toolbar !== undefined ? this.options.modules.toolbar : this.defaultModules.toolbar,
-        handlers: {}
+        handlers: {
+          color: function (value) {
+            if (value === 'custom-color') {
+              value = window.prompt('Enter Hex Color Code: #990000')
+            }
+            this.quill.format('color', value)
+          }
+        }
       }
       this.options.modules.clipboard = this.options.modules.clipboard !== undefined ? this.options.modules.clipboard : this.defaultModules.clipboard
       this.options.modules.keyboard = this.options.modules.keyboard !== undefined ? this.options.modules.keyboard : this.defaultModules.keyboard
@@ -356,6 +363,21 @@
       &:focus {
         background: $color__background;
       }
+    }
+
+    .ql-color .ql-picker-options [data-value=custom-color] {
+      background: none !important;
+      width: 100% !important;
+      height: 20px !important;
+      text-align: center;
+    }
+
+    .ql-color .ql-picker-options [data-value=custom-color]:before {
+      content: 'Custom Color';
+    }
+
+    .ql-color .ql-picker-options [data-value=custom-color]:hover {
+      border-color: transparent !important;
     }
 
     /* Default content styling */
