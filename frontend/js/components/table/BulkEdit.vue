@@ -50,7 +50,7 @@
             deleted: status.deleted && (row.deleted || false),
             canDelete: status.canDelete && row.delete !== null,
             canDestroy: status.canDestroy && row.hasOwnProperty('destroyable'),
-            exported: status.exported && (row.exported || false),
+            exported: status.exported && (row.export || false),
             canExport: status.canExport && row.export !== null
           }
         }, {
